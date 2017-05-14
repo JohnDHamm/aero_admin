@@ -1,0 +1,163 @@
+<div id="adminBG">
+
+	<div id="logoDiv" layout="row" flex="60" flex-offset="20" flex-gt-sm="20" flex-offset-gt-sm="40">
+		<img src="./img/AERO_logo_med.png" class="loginAeroLogo">
+	</div>
+
+	<div id="coachesDiv" layout="column" flex flex-offset="5" flex-gt-sm="70" flex-offset-gt-sm="15">
+		<div layout="row" flex layout-align="center">
+			<h1 class="coachTitleText">Coaches: </h1>
+		</div>
+		<div layout="row" flex flex-offset-gt-sm="5">
+			<div class="coachTitles displayName" flex="10">
+				login
+			</div>
+			<div class="coachTitles" flex="10">
+				first name
+			</div>
+			<div class="coachTitles" flex="15">
+				last name
+			</div>
+			<div class="coachTitles" flex="25">
+				email
+			</div>
+			<div class="coachTitles" flex="10">
+				password
+			</div>
+			<div class="coachTitles" flex="10">
+				admin
+			</div>
+			<div class="coachTitles" flex="10">
+				workout
+			</div>
+			<div class="coachTitles" flex="10">
+				archive
+			</div>
+		</div>
+
+		<!-- COACH LIST -->
+		<div layout="column" flex layout-align="center" ng-repeat="coach in coaches" ng-hide="showEditCoachModal">
+			<div id="athleteListRow{{coach.id}}" class="coachListRow" layout="row" flex flex-offset-gt-sm="5" layout-align="left center">
+				<div flex="10">
+				  <p class="displayName">{{coach.login}}</p>
+			  </div>
+				<div flex="10">
+					<p>{{coach.first_name}}</p>
+				</div>
+				<div flex="15">
+					<p>{{coach.last_name}}</p>
+				</div>
+				<div flex="25">
+				  <p>{{coach.email}}</p>
+			  </div>
+				<div flex="10">
+				  <p>{{coach.password}}</p>
+			  </div>
+				<div flex="10">
+				  <p>{{coach.admin}}</p>
+			  </div>
+				<div flex="10">
+				  <p>{{coach.workout_admin}}</p>
+			  </div>
+				<div flex="10">
+				  <p>{{coach.archive}}</p>
+			  </div>
+			  <div flex>
+			  	<i ng-click="coachEdit(coach.id)" class="material-icons editIcon">edit</i>
+			  </div>
+			</div>
+	  	<div layout="row" flex="90" flex-offset="5">
+				<div flex class="dividerDiv">
+				</div>
+			</div>
+		</div>
+
+		<!-- EDIT COACH -->
+		<div ng-show="showEditCoachModal" class="editCoachModal" layout="column" flex flex-offset-gt-sm="5">
+			<div layout="row" flex>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_login" type="text" ng-model="editCoach.login" class="validate" aria-label="edit athlete display name">
+				</md-input-container>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_firstName" type="text" ng-model="editCoach.first_name" class="validate" aria-label="edit athlete first name">
+				</md-input-container>
+				<md-input-container flex="15" class="groupInput">
+					<input name="editCoach_lastName" type="text" ng-model="editCoach.last_name" class="validate" aria-label="edit athlete last name">
+				</md-input-container>
+				<md-input-container flex="25" class="groupInput">
+					<input name="editCoach_email" type="email" ng-model="editCoach.email" class="validate" aria-label="edit athlete age">
+				</md-input-container>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_password" type="text" ng-model="editCoach.password" class="validate" aria-label="edit athlete age">
+				</md-input-container>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_admin" type="text" ng-model="editCoach.admin" class="validate" aria-label="edit athlete swim pace">
+				</md-input-container>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_workout_admin" type="text" ng-model="editCoach.workout_admin" class="validate" aria-label="edit athlete bike pace">
+				</md-input-container>
+				<md-input-container flex="10" class="groupInput">
+					<input name="editCoach_archive" type="text" ng-model="editCoach.archive" class="validate" aria-label="edit athlete run pace">
+				</md-input-container>
+			</div>
+			<div layout="row" flex layout-align="center">
+				<md-button class="md-raised" ng-click="saveEditedCoach()">save change(s)</md-button>
+				<md-button class="md-raised" ng-click="cancelEditCoach()">cancel</md-button>
+			</div>
+		</div>
+
+		<!-- ADD NEW COACH -->
+		<div layout="row" flex flex-offset-gt-sm="5">
+			<h5 class="addNew">Add new coach:</h5>
+		</div>
+		<div layout="row" flex flex-offset-gt-sm="5">
+			<md-input-container flex="10" class="groupInput">
+				<label>login</label>
+				<input name="newCoach_login" type="text" ng-model="newCoach_login" class="validate">
+			</md-input-container>
+			<md-input-container flex="10" class="groupInput">
+				<label>first name</label>
+				<input name="newCoach_firstName" type="text" ng-model="newCoach_first_name" class="validate">
+			</md-input-container>
+			<md-input-container flex="15" class="groupInput">
+				<label>last name</label>
+				<input name="newCoach_lastName" type="text" ng-model="newCoach_last_name" class="validate">
+			</md-input-container>
+			<md-input-container flex="25" class="groupInput">
+				<label>email</label>
+				<input name="newCoach_email" type="email" ng-model="newCoach_email" class="validate">
+			</md-input-container>
+			<md-input-container flex="10" class="groupInput">
+			  <label>password</label>
+				<input name="newCoach_password" type="text" ng-model="newCoach_password" class="validate">
+			</md-input-container>
+			<md-input-container flex="10" class="groupInput">
+				<label>admin</label>
+				<input name="newCoach_admin" type="text" ng-model="newCoach_admin" class="validate">
+			</md-input-container>
+			<md-input-container flex="10" class="groupInput">
+				<label>workout</label>
+				<input name="newCoach_workout" type="text" ng-model="newCoach_workout_admin" class="validate">
+			</md-input-container>
+			<md-input-container flex="10" class="groupInput">
+				<label>archive</label>
+				<input name="newCoach_archive" type="text" ng-model="newCoach_archive" class="validate">
+			</md-input-container>
+			<div flex>
+			  <i ng-click="addCoach()" class="material-icons addIcon">add_circle_outline</i>
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+</div>
+
+
+

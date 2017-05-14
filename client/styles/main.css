@@ -1,0 +1,78 @@
+#adminBG {
+	min-height: 100vh;
+	padding: 10px 0 5px 0;
+  background: linear-gradient(rgb(255,238,56), rgb(233,67,57));
+}
+
+#logoDiv {
+	padding-top: 20px;
+}
+
+img.loginAeroLogo {
+	width: 100%;
+	height: 100%;
+}
+
+#coachesDiv {
+	position: relative;
+	padding-top: 20px
+}
+
+.coachTitleText {
+	color: rgba(0,0,0,.6);
+	margin: 5px 0;
+}
+
+.coachTitles {
+	color: rgba(0,0,0,.3);
+	text-decoration: underline;
+	margin-bottom: 5px;
+}
+
+.displayName {
+	font-style: italic;
+}
+
+.coachListRow p {
+	margin: 10px 0px;
+}
+
+.editIcon {
+	color: rgba(0,0,0,.3);
+}
+
+.editIcon:hover {
+	color: rgba(50, 50, 200, 0.7);
+	transform: scale(1.25);
+	cursor: pointer;
+}
+
+.dividerDiv {
+	margin: 10px 0;
+	border-top: 1px solid rgba(0,0,0,.3);
+}
+
+h5.addNew {
+	margin: 15px 0 10px 0;
+	font-style: italic;
+}
+
+.groupInput {
+	margin: 0;
+}
+
+.addIcon {
+	color: rgba(0,0,0,.3);
+	padding-top: 5px;
+}
+
+.addIcon:hover {
+	color: rgba(50, 100, 50, 0.7);
+	transform: scale(1.25);
+	cursor: pointer;
+}
+
+.editCoachModal {
+	background-color: rgba(255,255,255,0.3);
+	border: 1px solid gba(0,0,0,.3);
+}
