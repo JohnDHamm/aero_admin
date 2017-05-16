@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+// const config = require('../db/knexfile').development;
 const config = require('../db/knexfile').production;
 const knex = require('knex')(config)
 

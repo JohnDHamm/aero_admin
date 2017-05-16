@@ -9,6 +9,12 @@ angular
 				templateUrl: 'partials/main.html'
 			})
 	)
+	.config(function($mdThemingProvider) {
+	  $mdThemingProvider.theme('default')
+	    .accentPalette('green', {
+	    	'default': '500'
+	    });
+  })
 	.controller('MainCtrl', function($scope, $http) {
 		$scope.showEditCoachModal = false;
 
@@ -19,6 +25,10 @@ angular
 				$scope.coaches = data.data;
 			})
 		}
+
+		$scope.newCoach_admin = false;
+		$scope.newCoach_workout_admin = false;
+		$scope.newCoach_archive = false;
 
 		loadPage();
 
@@ -76,6 +86,17 @@ angular
 		$scope.cancelEditCoach = () => {
 			$scope.showEditCoachModal = false;
 			loadPage();
+		}
+
+		$scope.onSwitchChange = (id, val, col) => {
+			const editObj = {
+				[col]: val
+			};
+			$http
+				.put(`/api/editCoach/${id}`, editObj)
+				.then((data) => {
+					loadPage();
+				})
 		}
 
 	})
