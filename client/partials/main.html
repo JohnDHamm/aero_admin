@@ -54,13 +54,13 @@
 				  <p>{{coach.password}}</p>
 			  </div>
 				<div flex="10">
-				  <p>{{coach.admin}}</p>
+				  <md-switch ng-model="coach.admin" aria-label="admin switch" class="md-primary" ng-change="onSwitchChange(coach.id, coach.admin, 'admin')"></md-switch>
 			  </div>
 				<div flex="10">
-				  <p>{{coach.workout_admin}}</p>
+				  <md-switch ng-model="coach.workout_admin" aria-label="workout admin switch" class="md-primary" ng-change="onSwitchChange(coach.id, coach.workout_admin, 'workout_admin')"></md-switch>
 			  </div>
 				<div flex="10">
-				  <p>{{coach.archive}}</p>
+				  <md-switch ng-model="coach.archive" aria-label="archive switch" class="md-primary" ng-change="onSwitchChange(coach.id, coach.archive, 'archive')"></md-switch>
 			  </div>
 			  <div flex>
 			  	<i ng-click="coachEdit(coach.id)" class="material-icons editIcon">edit</i>
@@ -90,15 +90,19 @@
 				<md-input-container flex="10" class="groupInput">
 					<input name="editCoach_password" type="text" ng-model="editCoach.password" class="validate" aria-label="edit athlete age">
 				</md-input-container>
-				<md-input-container flex="10" class="groupInput">
-					<input name="editCoach_admin" type="text" ng-model="editCoach.admin" class="validate" aria-label="edit athlete swim pace">
-				</md-input-container>
-				<md-input-container flex="10" class="groupInput">
-					<input name="editCoach_workout_admin" type="text" ng-model="editCoach.workout_admin" class="validate" aria-label="edit athlete bike pace">
-				</md-input-container>
-				<md-input-container flex="10" class="groupInput">
-					<input name="editCoach_archive" type="text" ng-model="editCoach.archive" class="validate" aria-label="edit athlete run pace">
-				</md-input-container>
+
+			  <md-switch flex="10" ng-model="editCoach.admin" aria-label="admin switch" class="md-primary editSwitch"></md-switch>
+				<!-- <md-input-container flex="10" class="groupInput"> -->
+					<!-- <input name="editCoach_admin" type="text" ng-model="editCoach.admin" class="validate" aria-label="edit athlete swim pace"> -->
+				<!-- </md-input-container> -->
+			  <md-switch flex="10" ng-model="editCoach.workout_admin" aria-label="admin switch" class="md-primary editSwitch"></md-switch>
+				<!-- <md-input-container flex="10" class="groupInput"> -->
+					<!-- <input name="editCoach_workout_admin" type="text" ng-model="editCoach.workout_admin" class="validate" aria-label="edit athlete bike pace"> -->
+				<!-- </md-input-container> -->
+			  <md-switch flex="10" ng-model="editCoach.archive" aria-label="admin switch" class="md-primary editSwitch"></md-switch>
+				<!-- <md-input-container flex="10" class="groupInput"> -->
+					<!-- <input name="editCoach_archive" type="text" ng-model="editCoach.archive" class="validate" aria-label="edit athlete run pace"> -->
+				<!-- </md-input-container> -->
 			</div>
 			<div layout="row" flex layout-align="center">
 				<md-button class="md-raised" ng-click="saveEditedCoach()">save change(s)</md-button>

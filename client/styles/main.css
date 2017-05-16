@@ -76,3 +76,7 @@ h5.addNew {
 	background-color: rgba(255,255,255,0.3);
 	border: 1px solid gba(0,0,0,.3);
 }
+
+.editSwitch {
+	margin: 3px 0;
+}

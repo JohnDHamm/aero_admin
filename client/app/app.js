@@ -9,6 +9,11 @@ angular
 				templateUrl: 'partials/main.html'
 			})
 	)
+	.config(function($mdThemingProvider) {
+	  $mdThemingProvider.theme('default')
+	    .primaryPalette('green')
+	    .accentPalette('orange');
+  })
 	.controller('MainCtrl', function($scope, $http) {
 		$scope.showEditCoachModal = false;
 
@@ -76,6 +81,19 @@ angular
 		$scope.cancelEditCoach = () => {
 			$scope.showEditCoachModal = false;
 			loadPage();
+		}
+
+		$scope.onSwitchChange = (id, val, col) => {
+			// console.log("id, val, col", id, val, col);
+			const editObj = {
+				[col]: val
+			};
+			// console.log("editObj", editObj);
+			$http
+				.put(`/api/editCoach/${id}`, editObj)
+				.then((data) => {
+					loadPage();
+				})
 		}
 
 	})
