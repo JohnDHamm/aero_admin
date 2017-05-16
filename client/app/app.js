@@ -11,8 +11,9 @@ angular
 	)
 	.config(function($mdThemingProvider) {
 	  $mdThemingProvider.theme('default')
-	    .primaryPalette('green')
-	    .accentPalette('orange');
+	    .accentPalette('green', {
+	    	'default': '500'
+	    });
   })
 	.controller('MainCtrl', function($scope, $http) {
 		$scope.showEditCoachModal = false;
@@ -24,6 +25,10 @@ angular
 				$scope.coaches = data.data;
 			})
 		}
+
+		$scope.newCoach_admin = false;
+		$scope.newCoach_workout_admin = false;
+		$scope.newCoach_archive = false;
 
 		loadPage();
 
@@ -84,11 +89,9 @@ angular
 		}
 
 		$scope.onSwitchChange = (id, val, col) => {
-			// console.log("id, val, col", id, val, col);
 			const editObj = {
 				[col]: val
 			};
-			// console.log("editObj", editObj);
 			$http
 				.put(`/api/editCoach/${id}`, editObj)
 				.then((data) => {
